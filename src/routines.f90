@@ -1,5 +1,6 @@
 !> Some collection of routines, for demonstrating documentation 
 module routines
+  use kinds, only: dp
   implicit none
   public
 
@@ -17,7 +18,7 @@ contains
   ! Latex is treated with MathJax.
 
   function norm(a) result(norm_of_a)
-    !! Compute the norm of the vector \(\mathbf{a}\)
+    !! Compute the norm of the vector \(\mathbf{a}\)  
     !! The norm of the vector is defined as:
     !! \[ |\mathbf{a}| = \sqrt{ \mathbf{a} \cdot \mathbf{a} } \]
     

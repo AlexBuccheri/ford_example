@@ -4,7 +4,8 @@ project(ford_docs
         DESCRIPTION "Demonstrate Ford documentation"
         LANGUAGES Fortran)
 
-include(FindPkgConfig)
+# Not using find_package, hence comment out
+# include(FindPkgConfig)
 
 option(ENABLE_DOCS "Enable documentation" OFF)
 
@@ -13,7 +14,27 @@ if (${ENABLE_DOCS} STREQUAL "FORD")
    # find_package(Ford REQUIRED)
 
    find_program(FORD ford REQUIRED)
-   message("-- Ford documentation support enabled")
+   set(ford_output "documentation/ford")
+   file(MAKE_DIRECTORY ${ford_output})
+   message("-- Ford documentation support enabled.")
+
+   # Runs at compile time
+   add_custom_target(docs
+                     COMMAND ${FORD} -o ${ford_output} ${PROJECT_SOURCE_DIR}/project-description.md
+		      )
+ 
+elseif (${ENABLE_DOCS} STREQUAL "DOXYGEN")
+   find_program(DOXYGEN doxygen REQUIRED)
+   message("-- Doxygen documentation support enabled.")
+   set(doxy_output "documentation/doxy")
+   file(MAKE_DIRECTORY ${doxy_output})
+   add_custom_target(docs
+                     COMMAND ${DOXYGEN} ${PROJECT_SOURCE_DIR}/Doxyfile
+		     )
+
+else()
+   message(WARNING "--ENABLE_DOCS choice not recognised.")
+
 endif ()
 
 set(CMAKE_Fortran_BIN_DIRECTORY ${PROJECT_BINARY_DIR}/bin)
@@ -28,3 +49,7 @@ target_sources(main_exe
 	src/kinds.f90
 	src/routines.f90
         )
+
+
+# Forces documentation to be built before main exe
+#add_dependencies(main_exe docs)
