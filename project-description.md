@@ -1,5 +1,5 @@
 project: Ford Linking Demo 
-summary: Demonstrate Ford Ddocumentation and Linking  
+summary: Demonstrate Ford Documentation and Linking  
 src_dir: ./src
 author: Alexander Buccheri 
 author_email: abuccheri@physik.hu-berlin.de 
