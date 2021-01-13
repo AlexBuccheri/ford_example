@@ -6,5 +6,9 @@ page_dir: ./documentation
 media_dir: ./documentation/media
 author: Alexander Buccheri 
 author_email: abuccheri@physik.hu-berlin.de 
+predocmark: >
 docmark: !
 display: public
+         protected
+graph: true
+warn: true

@@ -9,9 +9,12 @@ include(FindPkgConfig)
 option(ENABLE_DOCS "Enable documentation" OFF)
 
 if (${ENABLE_DOCS} STREQUAL "FORD")
-   find_package(Ford REQUIRED)
-endif ()
+   # Requires FindFord.cmake in the CMAKE_MODULE_PATH
+   # find_package(Ford REQUIRED)
 
+   find_program(FORD ford REQUIRED)
+   message("-- Ford documentation support enabled")
+endif ()
 
 set(CMAKE_Fortran_BIN_DIRECTORY ${PROJECT_BINARY_DIR}/bin)
 set(CMAKE_Fortran_LIB_DIRECTORY ${PROJECT_BINARY_DIR}/lib)
@@ -22,9 +25,6 @@ add_executable(main_exe)
 target_sources(main_exe
         PRIVATE
         src/main.F90
+	src/kinds.f90
+	src/routines.f90
         )
-
-target_link_libraries(main_exe
-            PRIVATE
-            ${Ford}
-            )
