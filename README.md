@@ -4,7 +4,7 @@
 
 Ford can be installed with pip. One has to make sure Markdown is also up-to-date. Additionally, graphviz is required for the generation of dependency graphs:
 
-`pip3 ford Markdown graphviz`.  
+`pip install ford Markdown graphviz`.  
 
 Doxygen is available with most package managers i.e. macports, apt-get.
 
