@@ -50,6 +50,8 @@ If the Doxygen configuration file is missing, one can also run:
 to generate a configuration file, which can then be modified accordingly.
 
 
+## Useful References 
 
-
-
+Valid at the time of writing:
+* [Documentation options for fortran](https://cyber.dabamos.de/programming/modernfortran/source-code-documentation.html)
+* [Examples from which this doxygen documentation was based on](https://dannyvanpoucke.be/oop-fortran-tut6-en/)
